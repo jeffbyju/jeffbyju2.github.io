@@ -1,0 +1,38 @@
+/* Custom Styles */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Home Section */
+#home {
+    background: url('../images/home-bg.jpg') no-repeat center center/cover;
+    color: white;
+}
+
+/* Project Cards */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Skill Badges */
+.badge {
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Contact Form */
+form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

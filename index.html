@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jeff Byju - Portfolio</title>
+  
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- AOS for Animations -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    rel="stylesheet"
+  />
+
+  <!-- Google Fonts (optional) -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Custom Styles -->
+  <style>
+    /* Global Reset / Overrides */
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      background-color: #fdfdfd;
+    }
+    a {
+      text-decoration: none;
+    }
+
+    /* Navbar Styles */
+    .navbar-custom {
+      background: linear-gradient(90deg, #673ab7, #512da8);
+    }
+    .navbar-brand {
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #ffffff !important;
+    }
+    .navbar-nav .nav-link {
+      color: #ffffff !important;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #ffd700 !important; /* Golden accent on hover */
+    }
+
+    /* Hero / Home Section */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(
+        45deg,
+        rgba(103, 58, 183, 0.05) 0%,
+        rgba(81, 45, 168, 0.2) 100%
+      );
+      color: #333;
+      padding: 2rem 1rem;
+    }
+    #home h1 {
+      font-size: 3rem;
+      color: #2c2c2c;
+      font-weight: 700;
+    }
+    #home p.lead {
+      font-size: 1.2rem;
+      color: #444;
+      max-width: 800px;
+      margin: 0 auto 1.5rem auto;
+    }
+    #home .btn-primary {
+      background-color: #673ab7;
+      border-color: #673ab7;
+      transition: background-color 0.3s ease;
+    }
+    #home .btn-primary:hover {
+      background-color: #512da8;
+      border-color: #512da8;
+    }
+
+    /* Section Headings */
+    section h2 {
+      font-weight: 700;
+      color: #333;
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Decorative underline for headings */
+    section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #673ab7;
+      margin: 0.5rem auto 0 auto;
+      border-radius: 10px;
+    }
+
+    /* Projects Section */
+    #projects {
+      padding: 4rem 1rem;
+    }
+    .card {
+      border: none;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+    .card .card-img-top {
+      border-top-left-radius: 0.75rem;
+      border-top-right-radius: 0.75rem;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .card-text {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .card-footer {
+      background-color: #fafafa;
+    }
+    .card-footer a.btn {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Skills Section */
+    #skills {
+      background: linear-gradient(135deg, #f3f1ff, #fff);
+      padding: 4rem 1rem;
+    }
+    #skills .badge {
+      font-size: 0.85rem;
+      margin: 0.3rem;
+      background-color: #673ab7;
+      color: #ffffff;
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      transition: transform 0.2s;
+    }
+    #skills .badge:hover {
+      transform: scale(1.05);
+      background-color: #512da8;
+    }
+
+    /* Experience Section */
+    #experience {
+      padding: 4rem 1rem;
+      background-color: #fff;
+    }
+    #experience h4 {
+      font-weight: 600;
+      color: #673ab7;
+    }
+    #experience h6 {
+      color: #777;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    #experience ul {
+      margin-left: 1.2rem;
+      color: #555;
+    }
+
+    /* Contact Section */
+    #contact {
+      padding: 4rem 1rem;
+      background-color: #f3f1ff;
+    }
+    #contact form {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+    #contact .form-label {
+      color: #333;
+      font-weight: 500;
+    }
+    #contact .btn-primary {
+      background-color: #673ab7;
+      border-color: #673ab7;
+    }
+    #contact .btn-primary:hover {
+      background-color: #512da8;
+      border-color: #512da8;
+    }
+
+    /* Footer */
+    footer {
+      background: #673ab7;
+      color: #ffffff;
+      padding: 1.2rem;
+      text-align: center;
+    }
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #ffb300;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 576px) {
+      #home h1 {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-custom navbar-expand-lg fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="#home">Jeff Byju</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon" style="color: #fff;"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#home"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#experience">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME / HERO SECTION -->
+  <section id="home">
+    <div class="container" data-aos="fade-up">
+      <h1>Hey There! I'm Jeff Byju</h1>
+      <p class="lead">
+        MCS student at UIUC, passionate about Deep
+        Learning, Distributed Systems, and AI Applications.
+      </p>
+      <a href="#projects" class="btn btn-primary btn-lg">Explore My Work</a>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="container">
+      <h2 data-aos="fade-up">My Projects</h2>
+      <div class="row">
+        <!-- Project Card 1 -->
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100">
+            <img
+              src="images/deepfake_detection.png"
+              class="card-img-top"
+              alt="Deepfake Detection"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Deepfake Detection for Videos</h5>
+              <p class="card-text">
+                Detecting deepfake videos using CNNs and Bi-LSTMs with PyTorch, 
+                trained and tested using HPC resources, and exposed via Flask.
+              </p>
+            </div>
+            <div class="card-footer text-center">
+              <a
+                href="https://github.com/jeffbyju/deepfake-detection"
+                target="_blank"
+                class="btn btn-outline-primary me-2"
+                >View Code</a
+              >
+              <a
+                href="deepfake_doc.html"
+                class="btn btn-primary"
+                >Paper</a
+              >
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- Add more project cards as needed, following the same pattern. -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills">
+    <div class="container">
+      <h2 data-aos="fade-up">Skills &amp; Technologies</h2>
+      <div class="d-flex flex-wrap justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <!-- Example Skill Badges -->
+        <span class="badge">C++</span>
+        <span class="badge">Shell Scripting</span>
+        <span class="badge">Python</span>
+        <span class="badge">PyTorch</span>
+        <span class="badge">React.js</span>
+        <span class="badge">Node.js</span>
+        <span class="badge">Redux</span>
+        <span class="badge">AWS Lambda</span>
+        <span class="badge">Docker</span>
+        <span class="badge">Kubernetes</span>
+        <span class="badge">Terraform</span>
+        <!-- Add more as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience">
+    <div class="container">
+      <h2 data-aos="fade-up">Experience</h2>
+
+      <!-- AWS Experience -->
+      <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+        <h4>Amazon Web Services (AWS) – Software Development Engineer Intern</h4>
+        <h6>May 2023 - August 2023</h6>
+        <ul>
+          <li>
+            Collaborated with a team under AWS CloudFront to create a solution
+            using React and Plotly.js, improving data analysis by 20%.
+          </li>
+          <li>
+            Designed an optimized workflow with AWS Lambda, API Gateway, S3, 
+            SNS, and Pandas for efficient daily data processing & forecasting.
+          </li>
+          <li>
+            Introduced a novel flow to import metadata datasets into AWS Step 
+            Functions for coldstart forecasting on time series data.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Luminosity Lab -->
+      <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+        <h4>The Luminosity Lab, ASU – Researcher</h4>
+        <h6>August 2022 – May 2024</h6>
+        <ul>
+          <li>
+            Developed frontend using React for a simulation web application.
+          </li>
+          <li>
+            Worked on Node.js, Mongoose, MongoDB & Flask for the backend.
+          </li>
+          <li>
+            Led Docker containerization, improving deployment ease by ~10%.
+          </li>
+        </ul>
+      </div>
+
+      <!-- State Farm -->
+      <div class="mb-5" data-aos="fade-up" data-aos-delay="300">
+        <h4>State Farm – Software Engineer Intern</h4>
+        <h6>May 2022 – August 2022</h6>
+        <ul>
+          <li>
+            Developed a self-service product to set up security scans,
+            boosting productivity by 30%.
+          </li>
+          <li>
+            Built the backend in Node.js & Express with unit tests in Jest
+            and containerization via Docker.
+          </li>
+          <li>
+            Implemented GitLab CI/CD pipelines for automated testing and deployment.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="container">
+      <h2 data-aos="fade-up">Get in Touch</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8" data-aos="fade-up" data-aos-delay="100">
+          <!-- Example Form using Formspree. Replace with your own form or backend -->
+          <form
+            action="https://formspree.io/f/your-form-id"
+            method="POST"
+            class="p-4"
+          >
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="_replyto"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                class="form-control"
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary px-4">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="200">
+        <p>
+          Connect with me on
+          <a
+            href="https://www.linkedin.com/in/jeff-byju/"
+            target="_blank"
+            >LinkedIn</a
+          >
+          &nbsp;|&nbsp;
+          <a href="https://github.com/jeffbyju/" target="_blank">GitHub</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Jeff Byju. All rights reserved. 
+    <br />
+    <small>Designed & Built with ♥ using Bootstrap & AOS</small>
+  </footer>
+
+  <!-- Bootstrap JS + Popper (for navbar toggling) -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- AOS JS (animations) -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800, // Animation duration in ms
+      easing: "ease-in-out", 
+      once: true,    // Whether animation should happen only once
+    });
+  </script>
+</body>
+</html>
