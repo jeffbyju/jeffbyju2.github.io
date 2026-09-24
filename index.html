@@ -1,529 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jeff Byju - Portfolio</title>
-  
-  <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-
-  <!-- AOS for Animations -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
-    rel="stylesheet"
-  />
-
-  <!-- Google Fonts (optional) -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Custom Styles -->
-  <style>
-    /* Global Reset / Overrides */
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body, html {
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-      background-color: #fdfdfd;
-    }
-    a {
-      text-decoration: none;
-    }
-
-    /* Navbar Styles */
-    .navbar-custom {
-      background: linear-gradient(90deg, #673ab7, #512da8);
-    }
-    .navbar-brand {
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: #ffffff !important;
-    }
-    .navbar-nav .nav-link {
-      color: #ffffff !important;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-    }
-    .navbar-nav .nav-link:hover {
-      color: #ffd700 !important; /* Golden accent on hover */
-    }
-
-    /* Hero / Home Section */
-    #home {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(
-        45deg,
-        rgba(103, 58, 183, 0.05) 0%,
-        rgba(81, 45, 168, 0.2) 100%
-      );
-      color: #333;
-      padding: 2rem 1rem;
-    }
-    #home h1 {
-      font-size: 3rem;
-      color: #2c2c2c;
-      font-weight: 700;
-    }
-    #home p.lead {
-      font-size: 1.2rem;
-      color: #444;
-      max-width: 800px;
-      margin: 0 auto 1.5rem auto;
-    }
-    #home .btn-primary {
-      background-color: #673ab7;
-      border-color: #673ab7;
-      transition: background-color 0.3s ease;
-    }
-    #home .btn-primary:hover {
-      background-color: #512da8;
-      border-color: #512da8;
-    }
-
-    /* Section Headings */
-    section h2 {
-      font-weight: 700;
-      color: #333;
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    /* Decorative underline for headings */
-    section h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: #673ab7;
-      margin: 0.5rem auto 0 auto;
-      border-radius: 10px;
-    }
-
-    /* Projects Section */
-    #projects {
-      padding: 4rem 1rem;
-    }
-    .card {
-      border: none;
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-    }
-    .card .card-img-top {
-      border-top-left-radius: 0.75rem;
-      border-top-right-radius: 0.75rem;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #333;
-    }
-    .card-text {
-      font-size: 0.95rem;
-      color: #555;
-    }
-    .card-footer {
-      background-color: #fafafa;
-    }
-    .card-footer a.btn {
-      margin-bottom: 0.5rem;
-    }
-
-    /* Skills Section */
-    #skills {
-      background: linear-gradient(135deg, #f3f1ff, #fff);
-      padding: 4rem 1rem;
-    }
-    #skills .badge {
-      font-size: 0.85rem;
-      margin: 0.3rem;
-      background-color: #673ab7;
-      color: #ffffff;
-      padding: 0.6rem 1rem;
-      border-radius: 20px;
-      transition: transform 0.2s;
-    }
-    #skills .badge:hover {
-      transform: scale(1.05);
-      background-color: #512da8;
-    }
-
-    /* Experience Section */
-    #experience {
-      padding: 4rem 1rem;
-      background-color: #fff;
-    }
-    #experience h4 {
-      font-weight: 600;
-      color: #673ab7;
-    }
-    #experience h6 {
-      color: #777;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
-    }
-    #experience ul {
-      margin-left: 1.2rem;
-      color: #555;
-    }
-
-    /* Contact Section */
-    #contact {
-      padding: 4rem 1rem;
-      background-color: #f3f1ff;
-    }
-    #contact form {
-      background-color: #fff;
-      border-radius: 0.5rem;
-      padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-    }
-    #contact .form-label {
-      color: #333;
-      font-weight: 500;
-    }
-    #contact .btn-primary {
-      background-color: #673ab7;
-      border-color: #673ab7;
-    }
-    #contact .btn-primary:hover {
-      background-color: #512da8;
-      border-color: #512da8;
-    }
-
-    /* Footer */
-    footer {
-      background: #673ab7;
-      color: #ffffff;
-      padding: 1.2rem;
-      text-align: center;
-    }
-    footer a {
-      color: #ffd700;
-      text-decoration: none;
-    }
-    footer a:hover {
-      color: #ffb300;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 576px) {
-      #home h1 {
-        font-size: 2.3rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Jeff Byju — Systems Engineer</title>
+<meta name="description" content="Systems engineer focused on low-latency C++, performance measurement, and distributed ML infrastructure." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-custom navbar-expand-lg fixed-top">
-    <div class="container-fluid px-4">
-      <a class="navbar-brand" href="#home">Jeff Byju</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon" style="color: #fff;"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#home"
-              >Home</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#experience">Experience</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
-  <!-- HOME / HERO SECTION -->
-  <section id="home">
-    <div class="container" data-aos="fade-up">
-      <h1>Hey There! I'm Jeff Byju</h1>
-      <p class="lead">
-        MCS student at UIUC, passionate about Deep
-        Learning, Distributed Systems, and AI Applications.
-      </p>
-      <a href="#projects" class="btn btn-primary btn-lg">Explore My Work</a>
-    </div>
-  </section>
+<a class="skip" href="#main">Skip to content</a>
 
-  <!-- PROJECTS SECTION -->
-  <section id="projects">
-    <div class="container">
-      <h2 data-aos="fade-up">My Projects</h2>
-      <div class="row">
-        <!-- Project Card 1 -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card h-100">
-            <img
-              src="images/deepfake_detection.png"
-              class="card-img-top"
-              alt="Deepfake Detection"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Deepfake Detection for Videos</h5>
-              <p class="card-text">
-                Detecting deepfake videos using CNNs and Bi-LSTMs with PyTorch, 
-                trained and tested using HPC resources, and exposed via Flask.
-              </p>
-            </div>
-            <div class="card-footer text-center">
-              <a
-                href="https://github.com/jeffbyju/deepfake-detection"
-                target="_blank"
-                class="btn btn-outline-primary me-2"
-                >View Code</a
-              >
-              <a
-                href="deepfake_doc.html"
-                class="btn btn-primary"
-                >Paper</a
-              >
-            </div>
-          </div>
-          
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span class="brand-mark">JB</span> Jeff Byju</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ───────────────────────── HERO ───────────────────────── -->
+<section id="top" class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal">Systems &amp; Performance Engineering</p>
+    <h1 class="reveal">
+      I build systems where<br /><span class="grad">microseconds are the product.</span>
+    </h1>
+    <p class="lead reveal">
+      Low-latency C++, lock-free concurrency, and the measurement discipline to prove
+      the numbers are real. Currently working on distributed ML infrastructure and
+      multi-GPU inference.
+    </p>
+    <div class="cta reveal">
+      <a class="btn btn-primary" href="#work">Selected work</a>
+      <a class="btn" href="https://github.com/jeffbyju" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/jeff-byju/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+
+    <ul class="stat-strip reveal">
+      <li><b>2.25 µs</b><span>median service time</span></li>
+      <li><b>0</b><span>steady-state allocations</span></li>
+      <li><b>10&#8211;62%</b><span>TTFT cut, published</span></li>
+      <li><b>1.37M</b><span>nodes/sec search</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ───────────────────────── WORK ───────────────────────── -->
+<section id="work" class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Selected work</h2>
+      <p>Every number below is measured and reproducible from the repository.</p>
+    </div>
+
+    <!-- Game server -->
+    <article class="proj reveal">
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3>Low-Latency Sharded Game Server</h3>
+          <span class="year">2024 &#8211; 2026</span>
         </div>
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card h-100">
-            <img
-              src="images/game_start.png"
-              class="card-img-top"
-              alt="Deepfake Detection"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Chess AI</h5>
-              <p class="card-text">
-                I developed a Chess AI that integrates Deep Q-Learning (DQN) with a visually interactive Qt5 GUI, allowing both human and AI gameplay. The project includes a rule-compliant chess engine that supports all special moves (castling, en passant, pawn promotion, check, and checkmate detection). The AI is trained using a replay buffer and reward-based learning to improve decision-making over time.
-              </p>
-            </div>
-            <div class="card-footer text-center">
-              <a
-                href="https://github.com/jeffbyju/chess-ai"
-                target="_blank"
-                class="btn btn-outline-primary me-2"
-                >View Code</a
-              >
-            </div>
-          </div>
-          
-        </div>
-        
-
-        <!-- Add more project cards as needed, following the same pattern. -->
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS SECTION -->
-  <section id="skills">
-    <div class="container">
-      <h2 data-aos="fade-up">Skills &amp; Technologies</h2>
-      <div class="d-flex flex-wrap justify-content-center" data-aos="fade-up" data-aos-delay="100">
-        <!-- Example Skill Badges -->
-        <span class="badge">C++</span>
-        <span class="badge">Shell Scripting</span>
-        <span class="badge">Python</span>
-        <span class="badge">PyTorch</span>
-        <span class="badge">React.js</span>
-        <span class="badge">Node.js</span>
-        <span class="badge">Redux</span>
-        <span class="badge">AWS Lambda</span>
-        <span class="badge">Docker</span>
-        <span class="badge">Kubernetes</span>
-        <span class="badge">Terraform</span>
-        <!-- Add more as needed -->
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE SECTION -->
-  <section id="experience">
-    <div class="container">
-      <h2 data-aos="fade-up">Experience</h2>
-
-      <!-- AWS Experience -->
-      <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
-        <h4>Amazon Web Services (AWS) – Software Development Engineer Intern</h4>
-        <h6>May 2023 - August 2023</h6>
-        <ul>
-          <li>
-            Collaborated with a team under AWS CloudFront to create a solution
-            using React and Plotly.js, improving data analysis by 20%.
-          </li>
-          <li>
-            Designed an optimized workflow with AWS Lambda, API Gateway, S3, 
-            SNS, and Pandas for efficient daily data processing & forecasting.
-          </li>
-          <li>
-            Introduced a novel flow to import metadata datasets into AWS Step 
-            Functions for coldstart forecasting on time series data.
-          </li>
+        <ul class="tags">
+          <li>C++23</li><li>Lock-free</li><li>kqueue / epoll</li><li>io_uring</li><li>NUMA</li>
         </ul>
-      </div>
-
-      <!-- Luminosity Lab -->
-      <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
-        <h4>The Luminosity Lab, ASU – Researcher</h4>
-        <h6>August 2022 – May 2024</h6>
-        <ul>
-          <li>
-            Developed frontend using React for a simulation web application.
-          </li>
-          <li>
-            Worked on Node.js, Mongoose, MongoDB & Flask for the backend.
-          </li>
-          <li>
-            Led Docker containerization, improving deployment ease by ~10%.
-          </li>
-        </ul>
-      </div>
-
-      <!-- State Farm -->
-      <div class="mb-5" data-aos="fade-up" data-aos-delay="300">
-        <h4>State Farm – Software Engineer Intern</h4>
-        <h6>May 2022 – August 2022</h6>
-        <ul>
-          <li>
-            Developed a self-service product to set up security scans,
-            boosting productivity by 30%.
-          </li>
-          <li>
-            Built the backend in Node.js & Express with unit tests in Jest
-            and containerization via Docker.
-          </li>
-          <li>
-            Implemented GitLab CI/CD pipelines for automated testing and deployment.
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact">
-    <div class="container">
-      <h2 data-aos="fade-up">Get in Touch</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-8" data-aos="fade-up" data-aos-delay="100">
-          <!-- Example Form using Formspree. Replace with your own form or backend -->
-          <form
-            action="https://formspree.io/f/your-form-id"
-            method="POST"
-            class="p-4"
-          >
-            <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                name="name"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="_replyto"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea
-                class="form-control"
-                id="message"
-                name="message"
-                rows="5"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary px-4">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="200">
         <p>
-          Connect with me on
-          <a
-            href="https://www.linkedin.com/in/jeff-byju/"
-            target="_blank"
-            >LinkedIn</a
-          >
-          &nbsp;|&nbsp;
-          <a href="https://github.com/jeffbyju/" target="_blank">GitHub</a>
+          A real-time multiplayer server built to a single rule: no mutex on any
+          steady-state path. An acceptor feeds N I/O threads, which feed M simulation
+          shards, joined only by bounded single-producer/single-consumer rings. Each
+          shard owns its entities exclusively, so the tick body has nothing to lock.
         </p>
+        <p>
+          Messages are fixed-layout PODs cast in place from the socket buffer — no
+          parse step, no allocation — with alignment enforced as a protocol invariant
+          and a <code>consteval</code> check that turns an unhandled message type into
+          a <em>build error</em> rather than a production log line.
+        </p>
+        <div class="metrics">
+          <div><b>10,937</b><span>lines of C++23, zero deps</span></div>
+          <div><b>2.25 µs</b><span>median service time</span></div>
+          <div><b>78.7K/s</b><span>at p50 380 µs, 2.3 cores</span></div>
+          <div><b>70 / 304K</b><span>tests / assertions, ASan+UBSan</span></div>
+        </div>
+        <p class="note">
+          Zero steady-state heap allocations, verified by interposing global
+          <code>operator new</code>. Load is generated open-loop against a fixed
+          schedule and timed from when each request was <em>due</em>, so the harness is
+          coordinated-omission-free — and every run prints its own reasons to be
+          distrusted.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/jeffbyju" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- CacheFlow -->
+    <article class="proj reveal">
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3>CacheFlow — 3D-Parallel KV Cache Restoration</h3>
+          <span class="year">Published · arXiv:2604.25080</span>
+        </div>
+        <ul class="tags">
+          <li>Python</li><li>vLLM</li><li>LMCache</li><li>Multi-GPU</li><li>Research</li>
+        </ul>
+        <p>
+          Research contribution under Prof. Fan Lai at UIUC. CacheFlow parallelizes KV-cache
+          restoration across tokens, layers and GPUs, cutting time-to-first-token by
+          <b>10&#8211;62%</b> across Qwen3-8B, Llama-3.1-8B and Qwen3-30B-A3B.
+        </p>
+        <p>
+          I prototyped the <b>bidirectional two-pointer restoration strategy</b> at token-chunk
+          and layer granularity: paired worker threads converge from opposite ends of a range,
+          one recomputing KV on the GPU and the other loading from cache storage. Because those
+          two paths contend for entirely different resources — SM time versus storage bandwidth —
+          running them toward each other keeps both saturated instead of serializing, and the
+          meeting point self-adjusts to whichever side is faster on that hardware.
+        </p>
+        <div class="metrics">
+          <div><b>10&#8211;62%</b><span>TTFT reduction</span></div>
+          <div><b>1.1&#8211;1.7&times;</b><span>speedup</span></div>
+          <div><b>3</b><span>models evaluated</span></div>
+          <div><b>L40S / A100 / H100</b><span>hardware</span></div>
+        </div>
+        <div class="proj-links">
+          <a href="https://arxiv.org/abs/2604.25080" target="_blank" rel="noopener">Read the paper ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Chess -->
+    <article class="proj reveal">
+      <div class="proj-media">
+        <img src="images/game_start.png" alt="Chess engine interface at the starting position" loading="lazy" />
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3>Chess Engine with Alpha-Beta Search</h3>
+          <span class="year">2024 &#8211; 2026</span>
+        </div>
+        <ul class="tags">
+          <li>C++17</li><li>Qt5</li><li>CMake</li><li>Search</li>
+        </ul>
+        <p>
+          Negamax alpha-beta with iterative deepening, quiescence search, a 64 MB
+          transposition table, MVV-LVA ordering with killer moves and a history
+          heuristic, null-move pruning with the canonical zugzwang guards, and late
+          move reduction. Fully deterministic — no sampling, no MCTS, no neural
+          evaluation in the move path.
+        </p>
+        <p>
+          Correctness is gated on <b>perft</b>: the engine enumerates the full legal
+          game tree and matches published node counts exactly through depth 6
+          (119,060,324 positions). Every optimization was accepted only if that count
+          stayed exact — which is what made replacing the board representation safe.
+        </p>
+        <div class="metrics">
+          <div><b>~1840 Elo</b><span>95% CI 1730&#8211;1932</span></div>
+          <div><b>1.37M</b><span>nodes / sec</span></div>
+          <div><b>49&times;</b><span>perft(5): 8.55s &rarr; 176ms</span></div>
+          <div><b>790&times;</b><span>fewer heap allocations</span></div>
+        </div>
+        <p class="note">
+          The board is a 192-byte POD — exactly three cache lines — stored by value
+          instead of 64 heap-allocated pieces, with per-ply preallocated move buffers
+          so the search allocates nothing in the hot path.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/jeffbyju/chess-ai" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Bharat Bazar -->
+    <article class="proj reveal">
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3>Bharat Bazar — Conversational Commerce</h3>
+          <span class="year">2026</span>
+        </div>
+        <ul class="tags">
+          <li>FastAPI</li><li>LangChain</li><li>Firestore</li><li>React / TS</li><li>Terraform</li><li>GCP</li>
+        </ul>
+        <p>
+          An end-to-end agentic storefront on GCP: a FastAPI/WebSocket backend, a
+          15-tool LangChain agent layer, and a React/TypeScript client supporting
+          natural-language product discovery through checkout.
+        </p>
+        <p>
+          The interesting half is correctness under failure. Payment fulfillment is
+          <b>idempotent</b>, built on Firestore transactional claims so exactly one
+          caller can fulfil an order — duplicate webhooks are refused, crashed
+          in-progress claims are reclaimed after a staleness window, and stock is
+          reconciled after payment. Completion events are safe to arrive in any
+          order, or more than once.
+        </p>
+        <div class="metrics">
+          <div><b>15</b><span>agent tools</span></div>
+          <div><b>Exactly one</b><span>fulfilment per order</span></div>
+          <div><b>IaC</b><span>full GCP footprint in Terraform</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Deepfake -->
+    <article class="proj reveal">
+      <div class="proj-media">
+        <img src="images/deepfake_detection.png" alt="Deepfake detection project visualization" loading="lazy" />
+      </div>
+      <div class="proj-body">
+        <div class="proj-top">
+          <h3>Deepfake Detection for Videos</h3>
+          <span class="year">2024</span>
+        </div>
+        <ul class="tags"><li>PyTorch</li><li>CNN</li><li>HPC</li></ul>
+        <p>
+          A deep-learning pipeline for detecting manipulated video, trained on HPC
+          infrastructure. Coursework project for CS 444 at UIUC.
+        </p>
+        <div class="proj-links">
+          <a href="https://github.com/jeffbyju/deepfake-detection" target="_blank" rel="noopener">Source ↗</a>
+          <a href="deepfake_doc.html">Write-up</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ───────────────────────── EXPERIENCE ───────────────────────── -->
+<section id="experience" class="section alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Experience</h2>
+      <p>Research, infrastructure, and production backend work.</p>
+    </div>
+
+    <ol class="timeline">
+      <li class="reveal">
+        <div class="tl-head">
+          <h3>ML Systems Researcher</h3>
+          <span class="when">May 2025 &#8211; Dec 2025</span>
+        </div>
+        <p class="where">University of Illinois Urbana-Champaign · Champaign, IL</p>
+        <ul>
+          <li>Contributed to <b>CacheFlow</b> (arXiv:2604.25080) under Prof. Fan Lai — a Python
+              KV-cache restoration framework on vLLM/LMCache.</li>
+          <li>Prototyped the bidirectional two-pointer restoration strategy, overlapping GPU
+              recomputation with cache I/O on the restoration critical path.</li>
+        </ul>
+      </li>
+
+      <li class="reveal">
+        <div class="tl-head">
+          <h3>AI Engineer</h3>
+          <span class="when">Mar 2026 &#8211; Present</span>
+        </div>
+        <p class="where">Lightning Minds · Remote</p>
+        <ul>
+          <li>Built idempotent payment fulfillment on Firestore transactional claims, with
+              duplicate-webhook protection and stale-claim crash recovery.</li>
+          <li>Architected Bharat Bazar on GCP, with the full footprint codified in Terraform
+              behind a Cloud Build pipeline.</li>
+        </ul>
+      </li>
+
+      <li class="reveal">
+        <div class="tl-head">
+          <h3>Software Development Engineer Intern</h3>
+          <span class="when">May 2023 &#8211; Aug 2023</span>
+        </div>
+        <p class="where">Amazon Web Services — CloudFront Capacity Engineering · Seattle, WA</p>
+        <ul>
+          <li>Designed a serverless pipeline (Python, Lambda, API Gateway, S3, SNS, Pandas)
+              turning hourly demand records into <b>1,200+ time series across 400+ global
+              CloudFront PoPs</b> feeding Amazon Forecast.</li>
+          <li>Cut pipeline runtime <b>15 min → under 5</b> by parallelizing stage work across
+              concurrent Lambda invocations, using S3 as the shared intermediate store —
+              required by the Step Functions 256 KB state-payload limit.</li>
+          <li>Extended Forecast with an item-metadata dataset enabling cold-start forecasting
+              for newly commissioned PoPs with no demand history.</li>
+        </ul>
+      </li>
+
+      <li class="reveal">
+        <div class="tl-head">
+          <h3>Software Engineer Intern</h3>
+          <span class="when">May 2022 &#8211; Aug 2022</span>
+        </div>
+        <p class="where">State Farm — Application Security Engineering · Tempe, AZ</p>
+        <ul>
+          <li>Diagnosed a deployment bottleneck: a single shared test environment serialized
+              <b>8&#8211;9 engineers deploying multiple times per day</b>, silently overwriting
+              each other. Proposed and implemented per-developer environments keyed on git
+              identity, reworking Kubernetes ingress/deployments/services, per-pipeline image
+              tagging and GitLab CI/CD variables.</li>
+          <li>Replaced a script-driven SAST/DAST workflow with a self-service scanning platform,
+              adding Vault sidecar secret injection and Snyk Code/Container scans.</li>
+        </ul>
+      </li>
+
+      <li class="reveal">
+        <div class="tl-head">
+          <h3>Software Developer</h3>
+          <span class="when">Jun 2021 &#8211; Apr 2022</span>
+        </div>
+        <p class="where">University Technology Office, Arizona State University · Tempe, AZ</p>
+        <ul>
+          <li>Shipped features for a production mobile application serving <b>100,000+ daily
+              users</b>; built an AWS Lambda/S3-backed dashboard holding sub-200 ms API Gateway
+              response times.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ───────────────────────── SKILLS ───────────────────────── -->
+<section id="skills" class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Skills</h2>
+      <p>What I reach for, roughly in order of depth.</p>
+    </div>
+
+    <div class="skills reveal">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <ul class="chips">
+          <li>C++ (11/17/20/23)</li><li>Python</li><li>CUDA</li><li>SQL</li><li>Shell</li><li>TypeScript</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Systems &amp; Performance</h3>
+        <ul class="chips">
+          <li>Lock-free (SPSC/MPMC)</li><li>C++ memory model</li><li>Cache-line optimization</li>
+          <li>Zero-copy I/O</li><li>Allocator design</li><li>epoll / kqueue / io_uring</li>
+          <li>NUMA &amp; thread affinity</li><li>HDR histograms</li><li>Coordinated omission</li>
+          <li>perf counters</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>ML Systems</h3>
+        <ul class="chips">
+          <li>PyTorch</li><li>vLLM</li><li>LMCache</li><li>Multi-GPU inference</li><li>Pandas</li><li>LangChain</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Infrastructure</h3>
+        <ul class="chips">
+          <li>AWS (Lambda, API GW, S3, CloudFront)</li><li>GCP (Cloud Run, Firestore)</li>
+          <li>Docker</li><li>Kubernetes</li><li>Terraform</li><li>GitLab CI/CD</li><li>Linux</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    &copy; 2025 Jeff Byju. All rights reserved. 
-    <br />
-    <small>Designed & Built with ♥ using Bootstrap & AOS</small>
-  </footer>
+    <div class="edu reveal">
+      <div>
+        <h3>University of Illinois Urbana-Champaign</h3>
+        <p>M.S. Computer Science · GPA 3.66 <span class="when">Dec 2025</span></p>
+        <p class="course">Distributed Systems · Applied Parallel Programming · Real-Time Systems ·
+           Advanced Computer Networks · Systems for GenAI</p>
+      </div>
+      <div>
+        <h3>Arizona State University</h3>
+        <p>B.S. Computer Science · GPA 4.0, Summa Cum Laude <span class="when">May 2024</span></p>
+        <p class="course">Computer Architecture · Computer Networks · Design of Digital Hardware</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Bootstrap JS + Popper (for navbar toggling) -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-  ></script>
+<!-- ───────────────────────── CONTACT ───────────────────────── -->
+<section id="contact" class="section alt">
+  <div class="wrap contact reveal">
+    <h2>Let's talk</h2>
+    <p>
+      Open to conversations about low-latency systems, performance engineering, and
+      trading infrastructure.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="mailto:jeffbyju@gmail.com">jeffbyju@gmail.com</a>
+      <a class="btn" href="https://github.com/jeffbyju" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/jeff-byju/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
 
-  <!-- AOS JS (animations) -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800, // Animation duration in ms
-      easing: "ease-in-out", 
-      once: true,    // Whether animation should happen only once
-    });
-  </script>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>&copy; 2026 Jeff Byju</span>
+    <span class="mono">built by hand · no framework</span>
+  </div>
+</footer>
+
+<script src="js/scripts.js"></script>
 </body>
 </html>
